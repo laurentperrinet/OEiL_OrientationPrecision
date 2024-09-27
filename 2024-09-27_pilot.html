@@ -49,10 +49,10 @@
     timeline.push(preload);
 
     var instructions = {
-    type: jsPsychHtmlKeyboardResponse,
+    type: jsPsychImageSwipeResponse,
     stimulus: `
           <p>In this experiment, ...
-          <p>Press any key to begin.</p>
+          <p>Swipe or Press any key to begin.</p>
           `,
     post_trial_gap: 2000
     }; 
@@ -290,7 +290,7 @@
     timeline.push(trials);
 
     var byebye = {
-    type: jsPsychHtmlKeyboardResponse,
+    type: jsPsychImageSwipeResponse,
     stimulus: `
           <p>Many thanks for your participation ! </p>
           `,
