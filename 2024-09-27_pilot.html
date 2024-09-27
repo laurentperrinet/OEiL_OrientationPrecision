@@ -3,7 +3,7 @@
 <html>
   <head>
 
-    <script src="https://unpkg.com/jspsych@8.0.2"></script>
+    <script src="https://unpkg.com/jspsych@7.3.4"></script>
     <!-- <script src="https://unpkg.com/@jspsych/plugin-canvas-slider-response@2.0.0"></script> -->
     <!-- <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@2.0.0"></script> -->
     <script src="https://unpkg.com/@jspsych-contrib/plugin-image-swipe-response@1.0.0"></script>     
@@ -11,7 +11,7 @@
     <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
     <!-- <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.0.0"></script> -->
     <script src="https://unpkg.com/@jspsych/plugin-preload@2.0.0"></script>
-    <link href="https://unpkg.com/jspsych@8.0.2/css/jspsych.css" rel="stylesheet" />
+    <!-- <link href="https://unpkg.com/jspsych@8.0.2/css/jspsych.css" rel="stylesheet" /> -->
     <!-- <style>
       img {
         width: 1024px;
@@ -314,14 +314,14 @@
     
     jsPsych.run(timeline);
 
-    const filename = `pilot-${jsPsych.randomization.randomID(10)}-data.csv`
+    const filename = `pilot-${jsPsych.randomization.randomID(10)}-data.json`
 
     const save_data = {
       type: jsPsychPipe,
       action: "save",
       experiment_id: "lXM18cF9QE3z",
       filename: filename,
-      data_string: ()=>jsPsych.data.get().csv()
+      data_string: ()=>jsPsych.data.get().json()
     };
     </script>
 </html>
