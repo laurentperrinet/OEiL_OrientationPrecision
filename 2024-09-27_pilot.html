@@ -6,41 +6,18 @@
     <script src="https://unpkg.com/jspsych@7.3.4"></script>
     <!-- <script src="https://unpkg.com/@jspsych/plugin-canvas-slider-response@2.0.0"></script> -->
     <!-- <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@2.0.0"></script> -->
-    <script src="https://unpkg.com/@jspsych-contrib/plugin-image-swipe-response@1.0.0"></script>     
-    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
+    <script src="https://unpkg.com/@jspsych-contrib/plugin-image-swipe-response@1.0.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.0.0"></script>
+    <!-- <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script> -->
     <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe@0.3"></script>
     <!-- <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.0.0"></script> -->
     <script src="https://unpkg.com/@jspsych/plugin-preload@2.0.0"></script>
-    <!-- <link href="https://unpkg.com/jspsych@8.0.2/css/jspsych.css" rel="stylesheet" /> -->
-    <!-- <style>
-      img {
-        width: 1024px;
-      }
-            </style> -->
+    <link href="https://unpkg.com/jspsych@7.3.4/css/jspsych.css" rel="stylesheet" /> 
+
   </head>
   <body></body>
   <script>
     const timeline = [];
-
-    /* define welcome message trial */
-    // var welcome = {
-    //   type: jsPsychHtmlKeyboardResponse,
-    //   stimulus: "Welcome to the experiment. Press any key to begin."
-    // };
-    // timeline.push(welcome);
-
-    // timeline.push({
-    // type: jsPsychFullscreen,
-    // fullscreen_mode: false
-    // });
-
-    function saveData(name, data){
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'write_data.php'); 
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      // xhr.send(JSON.stringify({data: data}));
-      xhr.send(JSON.stringify(data));
-    }
 
     var preload = {
       type: jsPsychPreload,
@@ -48,15 +25,16 @@
     };
     timeline.push(preload);
 
-    var instructions = {
-    type: jsPsychImageSwipeResponse,
-    stimulus: `
-          <p>In this experiment, ...
-          <p>Swipe or Press any key to begin.</p>
-          `,
-    post_trial_gap: 2000
-    }; 
-    timeline.push(instructions);
+    // const instructions = {
+    //   type: jsPsychHtmlButtonResponse,
+    //   stimulus: `
+    //         <p>In this experiment, ...
+    //         <p>Press any key to begin.</p>
+    //         `,
+    //   choices: "NO_KEYS",
+    //   trial_duration: 2000
+    // }; 
+    // timeline.push(instructions);
 
     // https://www.jspsych.org/v8/plugins/image-keyboard-response/
     const trials = {
@@ -285,18 +263,18 @@
           {stimulus: 'img_pilot/214.png'},
           {stimulus: 'img_pilot/215.png'},
       ]
-    }
-    
+    }    
     timeline.push(trials);
 
-    var byebye = {
-    type: jsPsychImageSwipeResponse,
-    stimulus: `
-          <p>Many thanks for your participation ! </p>
-          `,
-    post_trial_gap: 2000
-    }; 
-    timeline.push(byebye);
+    // const byebye = {
+    // type: jsPsychHtmlButtonResponse,
+    // stimulus: `
+    //       <p>Many thanks for your participation ! </p>
+    //       `,
+    // choices: "NO_KEYS",
+    // post_trial_gap: 2000
+    // }; 
+    // timeline.push(byebye);
 
     var jsPsych = initJsPsych();      
     const filename = `pilot-${jsPsych.randomization.randomID(10)}-data.json`
