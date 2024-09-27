@@ -8,7 +8,7 @@
     <!-- <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@2.0.0"></script> -->
     <script src="https://unpkg.com/@jspsych-contrib/plugin-image-swipe-response@1.0.0"></script>     
     <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
-    <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
+    <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe@0.3"></script>
     <!-- <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.0.0"></script> -->
     <script src="https://unpkg.com/@jspsych/plugin-preload@2.0.0"></script>
     <!-- <link href="https://unpkg.com/jspsych@8.0.2/css/jspsych.css" rel="stylesheet" /> -->
@@ -298,22 +298,21 @@
     }; 
     timeline.push(byebye);
 
-    // https://www.jspsych.org/v8/overview/data/#storing-data-permanently-as-a-file
-    function saveData( data){
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'write_data.php'); // 'write_data.php' is the path to the php file described above.
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(JSON.stringify({filedata: data}));
-    }
+    // // https://www.jspsych.org/v8/overview/data/#storing-data-permanently-as-a-file
+    // function saveData( data){
+    //   var xhr = new XMLHttpRequest();
+    //   xhr.open('POST', 'write_data.php'); // 'write_data.php' is the path to the php file described above.
+    //   xhr.setRequestHeader('Content-Type', 'application/json');
+    //   xhr.send(JSON.stringify({filedata: data}));
+    // }
 
-    // call the saveData function after the experiment is over
+    // // call the saveData function after the experiment is over
     var jsPsych = initJsPsych({
-      on_finish: function(){ saveData(jsPsych.data.get().csv()); }
-      // on_finish: function(){ saveData(jsPsych.data.get().filter({trial_type:'image-swipe-response'}).csv()); }
-      });      
+    //   on_finish: function(){ saveData(jsPsych.data.get().csv()); }
+    //   // on_finish: function(){ saveData(jsPsych.data.get().filter({trial_type:'image-swipe-response'}).csv()); }
+     });      
     
-    jsPsych.run(timeline);
-
+    // alternative https://github.com/jspsych/jspsych-contrib/tree/17582632285ca9648acf1ffa6e952de1360021f3/packages/plugin-nextcloud-filedrop
     const filename = `pilot-${jsPsych.randomization.randomID(10)}-data.json`
 
     const save_data = {
@@ -323,5 +322,12 @@
       filename: filename,
       data_string: ()=>jsPsych.data.get().json()
     };
+    timeline.push(save_data);
+
+    jsPsych.run(timeline);
+
+
+
+    // console.log(save_data);
     </script>
 </html>
