@@ -4,17 +4,17 @@
   <head>
 
     <script src="https://unpkg.com/jspsych@8.0.2"></script>
-    <script src="https://unpkg.com/@jspsych/plugin-canvas-slider-response@2.0.0"></script>
+    <!-- <script src="https://unpkg.com/@jspsych/plugin-canvas-slider-response@2.0.0"></script> -->
     <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@2.0.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script>
-    <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.0.0"></script>
+    <!-- <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.0.0"></script> -->
     <script src="https://unpkg.com/@jspsych/plugin-preload@2.0.0"></script>
     <link href="https://unpkg.com/jspsych@8.0.2/css/jspsych.css" rel="stylesheet" />
-    <style>
+    <!-- <style>
       img {
         width: 1024px;
       }
-            </style>
+            </style> -->
   </head>
   <body></body>
   <script>
@@ -36,15 +36,9 @@
       var xhr = new XMLHttpRequest();
       xhr.open('POST', 'write_data.php'); 
       xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(JSON.stringify({data: data}));
+      // xhr.send(JSON.stringify({data: data}));
+      xhr.send(JSON.stringify(data));
     }
-
-    var jsPsych = initJsPsych({
-      on_finish: function(){ 
-        saveData(jsPsych.data.get().csv()); 
-        //   jsPsych.data.displayData();
-      }
-    });
 
     var preload = {
       type: jsPsychPreload,
@@ -76,36 +70,36 @@
           {stimulus: 'img_pilot_folder/3.png'},
           {stimulus: 'img_pilot_folder/4.png'},
           {stimulus: 'img_pilot_folder/5.png'},
-          {stimulus: 'img_pilot_folder/6.png'},
-          {stimulus: 'img_pilot_folder/7.png'},
-          {stimulus: 'img_pilot_folder/8.png'},
-          {stimulus: 'img_pilot_folder/9.png'},
-          {stimulus: 'img_pilot_folder/10.png'},
-          {stimulus: 'img_pilot_folder/11.png'},
-          {stimulus: 'img_pilot_folder/12.png'},
-          {stimulus: 'img_pilot_folder/13.png'},
-          {stimulus: 'img_pilot_folder/14.png'},
-          {stimulus: 'img_pilot_folder/15.png'},
-          {stimulus: 'img_pilot_folder/16.png'},
-          {stimulus: 'img_pilot_folder/17.png'},
-          {stimulus: 'img_pilot_folder/18.png'},
-          {stimulus: 'img_pilot_folder/19.png'},
-          {stimulus: 'img_pilot_folder/20.png'},
-          {stimulus: 'img_pilot_folder/21.png'},
-          {stimulus: 'img_pilot_folder/22.png'},
-          {stimulus: 'img_pilot_folder/23.png'},
-          {stimulus: 'img_pilot_folder/24.png'},
-          {stimulus: 'img_pilot_folder/25.png'},
-          {stimulus: 'img_pilot_folder/26.png'},
-          {stimulus: 'img_pilot_folder/27.png'},
-          {stimulus: 'img_pilot_folder/28.png'},
-          {stimulus: 'img_pilot_folder/29.png'},
-          {stimulus: 'img_pilot_folder/30.png'},
-          {stimulus: 'img_pilot_folder/31.png'},
-          {stimulus: 'img_pilot_folder/32.png'},
-          {stimulus: 'img_pilot_folder/33.png'},
-          {stimulus: 'img_pilot_folder/34.png'},
-          {stimulus: 'img_pilot_folder/35.png'},
+          // {stimulus: 'img_pilot_folder/6.png'},
+          // {stimulus: 'img_pilot_folder/7.png'},
+          // {stimulus: 'img_pilot_folder/8.png'},
+          // {stimulus: 'img_pilot_folder/9.png'},
+          // {stimulus: 'img_pilot_folder/10.png'},
+          // {stimulus: 'img_pilot_folder/11.png'},
+          // {stimulus: 'img_pilot_folder/12.png'},
+          // {stimulus: 'img_pilot_folder/13.png'},
+          // {stimulus: 'img_pilot_folder/14.png'},
+          // {stimulus: 'img_pilot_folder/15.png'},
+          // {stimulus: 'img_pilot_folder/16.png'},
+          // {stimulus: 'img_pilot_folder/17.png'},
+          // {stimulus: 'img_pilot_folder/18.png'},
+          // {stimulus: 'img_pilot_folder/19.png'},
+          // {stimulus: 'img_pilot_folder/20.png'},
+          // {stimulus: 'img_pilot_folder/21.png'},
+          // {stimulus: 'img_pilot_folder/22.png'},
+          // {stimulus: 'img_pilot_folder/23.png'},
+          // {stimulus: 'img_pilot_folder/24.png'},
+          // {stimulus: 'img_pilot_folder/25.png'},
+          // {stimulus: 'img_pilot_folder/26.png'},
+          // {stimulus: 'img_pilot_folder/27.png'},
+          // {stimulus: 'img_pilot_folder/28.png'},
+          // {stimulus: 'img_pilot_folder/29.png'},
+          // {stimulus: 'img_pilot_folder/30.png'},
+          // {stimulus: 'img_pilot_folder/31.png'},
+          // {stimulus: 'img_pilot_folder/32.png'},
+          // {stimulus: 'img_pilot_folder/33.png'},
+          // {stimulus: 'img_pilot_folder/34.png'},
+          // {stimulus: 'img_pilot_folder/35.png'},
       ]
     }
     
@@ -113,7 +107,7 @@
 
     // timeline.push(debrief_block);    
 
-    jsPsych.run(timeline);
+    // jsPsych.run(timeline);
     // jsPsych.run([trial]);
 
     // // exit fullscreen mode
@@ -121,8 +115,22 @@
     //   type: jsPsychFullscreen,
     //   fullscreen_mode: false
     // });
+    
+    // https://www.jspsych.org/v8/overview/data/#storing-data-permanently-as-a-file
+    function saveData( data){
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'write_data.php'); // 'write_data.php' is the path to the php file described above.
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({filedata: data}));
+    }
 
+    // call the saveData function after the experiment is over
+    var jsPsych = initJsPsych({
+      on_finish: function(){ saveData(jsPsych.data.get().filter({trial_type:'image-keyboard-response'}).csv()); }
+      });      
+    
     // var data = jsPsych.data.get().filter({trial_type: 'categorize-image', correct: true});
-
-  </script>
+    // var data = jsPsych.data.get().filter({trial_type:'image-keyboard-response'});
+    jsPsych.run(timeline);
+    </script>
 </html>
