@@ -13,7 +13,12 @@
     <!-- <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.0.0"></script> -->
     <script src="https://unpkg.com/@jspsych/plugin-preload@2.0.0"></script>
     <link href="https://unpkg.com/jspsych@7.3.4/css/jspsych.css" rel="stylesheet" /> 
-
+    <style>
+      /* document.body.style.backgroundColor = '#808080'   */
+      body {
+        background-color: rgba(0.5, 0.5, 0.5, 0.5);
+      }      
+    </style>
   </head>
   <body></body>
   <script>
@@ -36,7 +41,8 @@
     // }; 
     // timeline.push(instructions);
 
-    // https://www.jspsych.org/v8/plugins/image-keyboard-response/
+    // was: https://www.jspsych.org/v8/plugins/image-keyboard-response/
+    // https://github.com/jspsych/jspsych-contrib/tree/main/packages/plugin-image-swipe-response
     const trials = {
       type: jsPsychImageSwipeResponse,
       // prompt: '<p>Press  left or right.</p>',
