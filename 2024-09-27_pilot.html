@@ -48,8 +48,8 @@
       // prompt: '<p>Press  left or right.</p>',
       choices: ['ArrowLeft', 'ArrowRight'],
       stimulus_duration: null,
-      stimulus_height: window.screen.height,
-      // stimulus_width: window.screen.width,
+      stimulus_height:  Math.min(window.screen.height, window.screen.width),
+      stimulus_width: Math.min(window.screen.height, window.screen.width),
       maintain_aspect_ratio: true,
       timeline: [
           {stimulus: 'img_pilot/0.png'},
@@ -295,7 +295,6 @@
     timeline.push(save_data);
 
     jsPsych.run(timeline);
-
 
     </script>
 </html>
