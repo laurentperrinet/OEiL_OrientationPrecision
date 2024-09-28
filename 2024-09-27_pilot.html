@@ -24,6 +24,18 @@
   <script>
     const timeline = [];
 
+    // if the URL of the page is: 
+    // http://localhost:8000/2024-09-27_pilot.html?id=toto
+    // https://laurentperrinet.github.io/OEiL_OrientationPrecision/2024-09-27_pilot.html?id=toto
+    var session_data = {
+        correct: true,
+        screen_height: window.screen.height, 
+        screen_width: window.screen.width,
+        id: jsPsych.data.getURLVariable('id')
+    }
+
+    jsPsych.data.write(trial_data);
+
     var preload = {
       type: jsPsychPreload,
       auto_preload: true
@@ -284,6 +296,7 @@
 
     // var jsPsych = initJsPsych();  
     var jsPsych = initJsPsych({
+      show_progress_bar: true,
       on_finish: function(){
         window.location = "https://laurentperrinet.github.io/OEiL_OrientationPrecision/"
       }
