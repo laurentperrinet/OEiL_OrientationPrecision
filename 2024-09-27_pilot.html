@@ -282,7 +282,13 @@
     // }; 
     // timeline.push(byebye);
 
-    var jsPsych = initJsPsych();      
+    // var jsPsych = initJsPsych();  
+    var jsPsych = initJsPsych({
+      on_finish: function(){
+        window.location = "https://laurentperrinet.github.io/OEiL_OrientationPrecision/"
+      }
+    });    
+    
     const filename = `pilot-${jsPsych.randomization.randomID(10)}-data.json`
 
     const save_data = {
