@@ -2,12 +2,11 @@
 
 
 ## instructions
-```
+
 You will be shown a texture and asked to judge whether it is tilted from the vertical. In the sequence, half are tilted on one side, the other half on the other.
 
 To answer, either press the left arrow (or swipe left on a tablet) if you think the texture is tilted to the left = \ = counter-clockwise and otherwise to the right = / = clockwise. 
 
-```
 
 ## e-mail
 ```
