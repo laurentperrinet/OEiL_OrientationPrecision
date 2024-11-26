@@ -1,11 +1,7 @@
 # manim -pql intro.py Intro 
+# cp media/videos/intro/480p15/Intro.mp4 .
 
 from manim import *
-
-
-
-import MotionClouds as mc
-
 
 class Intro(Scene):
     def construct(self):
@@ -36,9 +32,7 @@ class Intro(Scene):
         #--------------------------------
 
         run_time = 2
-        # my_object = MathTex(r"\Updownarrow").scale(8)
         my_object = Rectangle(width=1.0, height=4.0)
-        # square = Square()  # create a square
         
         title = Text("Consider a visual object like this rectangle...", color=WHITE).scale(0.75)
         self.add(title.to_edge(DOWN))
