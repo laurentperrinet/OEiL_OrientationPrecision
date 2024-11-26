@@ -177,8 +177,8 @@ class Intro(Scene):
         text1 = Tex('One experiment lasts about 4 minutes for 216 images.').shift(2*UP)
         text2 = Tex('Total time depends on your speed to judge orientation...').shift(UP)
         text3 = Tex('...so relax and do no hesitate to respond as fast as possible.') 
-        text4 = Tex('Your overall score will be shared at the end of the experiment,').shift(DOWN)
-        text5 = Tex('many thanks for participating !').shift(2*DOWN)
+        text4 = Tex('Your overall score will be shared at the end of the experiment.').shift(DOWN)
+        text5 = Tex('Now you may click on one banner below!').shift(2*DOWN)
 
         self.add(title)
         self.wait(run_time)
