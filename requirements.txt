@@ -1,0 +1,7 @@
+watermark
+pandas
+numpy
+pip
+manim
+matplotlib
+scipy
