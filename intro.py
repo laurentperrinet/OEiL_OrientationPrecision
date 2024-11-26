@@ -133,7 +133,7 @@ class Intro(Scene):
 
         # #--------------------------------
         
-        run_time = 4
+        run_time = 2
         image = ImageMobject('img_pilot/139.png')
         line = Line(ORIGIN, LEFT)        
         image.height = im_height
