@@ -46,7 +46,7 @@ class Intro(Scene):
         self.remove(title)
 
         self.play(Create(my_object), run_time=run_time) 
-        title = Text("..we may want to estimate its orientation...", color=WHITE).scale(0.75)
+        title = Text("...we may want to estimate its orientation...", color=WHITE).scale(0.75)
         self.add(title.to_edge(DOWN))
         self.play(
             my_object.animate.set_fill(PINK, opacity=0.5)
@@ -54,12 +54,12 @@ class Intro(Scene):
         self.wait(run_time)
         self.remove(title)
 
-        title = Text("..if it is tilted in one direction...", color=WHITE).scale(0.75)
+        title = Text("...if it is tilted in one direction...", color=WHITE).scale(0.75)
         self.add(title.to_edge(DOWN))
         self.play(my_object.animate.rotate(PI / 5), run_time=run_time/2)  
         self.remove(title)
 
-        title = Text("..or rather in the other...", color=WHITE).scale(0.75)
+        title = Text("...or rather in the other...", color=WHITE).scale(0.75)
         self.add(title.to_edge(DOWN))
         self.play(my_object.animate.rotate(-PI / 2.5), run_time=run_time)
         self.remove(title)
@@ -72,7 +72,7 @@ class Intro(Scene):
         self.play(Create(vertical), run_time=run_time) 
         self.remove(title)
 
-        title = Text("..to judge if it is tilted counter-clockwise...", color=WHITE).scale(0.75)
+        title = Text("...to judge if it is tilted counter-clockwise...", color=WHITE).scale(0.75)
         self.add(title.to_edge(DOWN))
         self.play(my_object.animate.rotate(PI / 2.5), run_time=run_time)
         self.remove(title)
@@ -81,6 +81,7 @@ class Intro(Scene):
         self.add(title.to_edge(DOWN))
         self.play(my_object.animate.rotate(-PI / 2.5), run_time=run_time)
         self.remove(title)
+        self.remove(vertical)
 
         self.play(Unwrite(my_object)) 
 
@@ -117,7 +118,7 @@ class Intro(Scene):
         line = Line(ORIGIN, RIGHT)        
         image.height = im_height
         self.add(image)
-        # self.wait(run_time)
+        self.wait(run_time)
         title = Text("That one is clockwise relative to the vertical...", color=WHITE).scale(0.75)
         self.add(title.to_edge(DOWN))
         self.play(Create(vertical), run_time=run_time) 
@@ -128,6 +129,7 @@ class Intro(Scene):
         self.play(MoveAlongPath(image, line), rate_func=linear, run_time=run_time)
         self.remove(title)
         self.remove(image)
+        self.remove(vertical)
 
         # #--------------------------------
         
@@ -136,7 +138,7 @@ class Intro(Scene):
         line = Line(ORIGIN, LEFT)        
         image.height = im_height
         self.add(image)
-        # self.wait(run_time)
+        self.wait(run_time)
         title = Text("Some orientations are closer to the vertical...", color=WHITE).scale(0.75)
         self.add(title.to_edge(DOWN))
         self.play(MoveAlongPath(image, line), rate_func=linear, run_time=run_time)
@@ -146,10 +148,10 @@ class Intro(Scene):
         #--------------------------------
         
         image = ImageMobject('img_pilot/161.png')
-        line = Line(ORIGIN, RIGHT)        
+        line = Line(ORIGIN, LEFT)        
         image.height = im_height
         self.add(image)
-        # self.wait(run_time)
+        self.wait(run_time)
         title = Text("Some are harder to detect...", color=WHITE).scale(0.75)
         self.add(title.to_edge(DOWN))
         self.play(MoveAlongPath(image, line), rate_func=linear, run_time=run_time)
@@ -162,7 +164,7 @@ class Intro(Scene):
         line = Line(ORIGIN, RIGHT)        
         image.height = im_height
         self.add(image)
-        # self.wait(run_time)
+        self.wait(run_time)
         title = Text("... however, always answer left or right!", color=WHITE).scale(0.75)
         self.add(title.to_edge(DOWN))
         self.play(MoveAlongPath(image, line), rate_func=linear, run_time=run_time)
@@ -170,6 +172,8 @@ class Intro(Scene):
         self.remove(image)
 
         #--------------------------------
+        run_time = 1
+
         title = Title(f"Orientation discrimination experiment")
         text1 = Tex('One experiment lasts about 4 minutes for 216 images.').shift(2*UP)
         text2 = Tex('Total time depends on your speed to judge orientation...').shift(UP)
