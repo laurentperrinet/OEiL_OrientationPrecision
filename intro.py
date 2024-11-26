@@ -42,10 +42,9 @@ class Intro(Scene):
         
         title = Text("Consider a visual object like this rectangle...", color=WHITE).scale(0.75)
         self.add(title.to_edge(DOWN))
-        self.wait(run_time)
-        self.remove(title)
-
+        # self.wait(run_time)
         self.play(Create(my_object), run_time=run_time) 
+        self.remove(title)
         title = Text("...we may want to estimate its orientation...", color=WHITE).scale(0.75)
         self.add(title.to_edge(DOWN))
         self.play(
