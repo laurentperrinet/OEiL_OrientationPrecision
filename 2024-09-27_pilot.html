@@ -1,16 +1,12 @@
-<!-- https://www.jspsych.org/latest/plugins/image-button-response/ -->
 <!DOCTYPE html>
 <html>
   <head>
-
+    
     <script src="https://unpkg.com/jspsych@7.3.4"></script>
-    <!-- <script src="https://unpkg.com/@jspsych/plugin-canvas-slider-response@2.0.0"></script> -->
-    <!-- <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@2.0.0"></script> -->
     <script src="https://unpkg.com/@jspsych-contrib/plugin-image-swipe-response@1.0.0"></script>
-    <script src="https://unpkg.com/@jspsych/plugin-html-button-response@2.0.0"></script>
-    <!-- <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@2.0.0"></script> -->
+    <!-- https://www.jspsych.org/v7/plugins/html-button-response/ -->
+    <script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.2.0"></script>
     <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe@0.3"></script>
-    <!-- <script src="https://unpkg.com/@jspsych/plugin-fullscreen@2.0.0"></script> -->
     <script src="https://unpkg.com/@jspsych/plugin-preload@2.0.0"></script>
     <link href="https://unpkg.com/jspsych@7.3.4/css/jspsych.css" rel="stylesheet" /> 
     <style>
@@ -30,25 +26,13 @@
     };
     timeline.push(preload);
 
-    // const instructions = {
-    //   type: jsPsychHtmlButtonResponse,
-    //   stimulus: `
-    //         <p>In this experiment, ...
-    //         <p>Press any key to begin.</p>
-    //         `,
-    //   choices: "NO_KEYS",
-    //   trial_duration: 2000
-    // }; 
-    // timeline.push(instructions);
-
-    // was: https://www.jspsych.org/v8/plugins/image-keyboard-response/
     // https://github.com/jspsych/jspsych-contrib/tree/main/packages/plugin-image-swipe-response
     const trials = {
       type: jsPsychImageSwipeResponse,
       // prompt: '<p>Press  left or right.</p>',
       choices: ['ArrowLeft', 'ArrowRight'],
       stimulus_duration: null,
-      stimulus_height:  Math.min(window.screen.height, window.screen.width),
+      stimulus_height: Math.min(window.screen.height, window.screen.width),
       stimulus_width: Math.min(window.screen.height, window.screen.width),
       maintain_aspect_ratio: true,
       timeline: [
@@ -268,21 +252,16 @@
           {stimulus: 'img_pilot/213.png'},
           {stimulus: 'img_pilot/214.png'},
           {stimulus: 'img_pilot/215.png'},
-      ]
+      ],
+      on_finish: function() {
+        // at the end of each trial, update the progress bar
+        // based on the current value and the proportion to update for each trial
+        var curr_progress_bar_value = jsPsych.getProgressBarCompleted();
+        jsPsych.setProgressBar(curr_progress_bar_value + (1/216));
+      }
     }    
     timeline.push(trials);
 
-    // const byebye = {
-    // type: jsPsychHtmlButtonResponse,
-    // stimulus: `
-    //       <p>Many thanks for your participation ! </p>
-    //       `,
-    // choices: "NO_KEYS",
-    // post_trial_gap: 2000
-    // }; 
-    // timeline.push(byebye);
-
-    // var jsPsych = initJsPsych();  
     var jsPsych = initJsPsych({
       show_progress_bar: true,
       default_iti: 200,
@@ -290,9 +269,8 @@
         window.location = "https://laurentperrinet.github.io/OEiL_OrientationPrecision/"
       }
     });    
-    
-    const filename = `pilot-${jsPsych.randomization.randomID(10)}-data.json`
 
+    const filename = `pilot-${jsPsych.randomization.randomID(10)}-data.json`
     const save_data = {
       type: jsPsychPipe,
       action: "save",
@@ -301,8 +279,18 @@
       data_string: ()=>jsPsych.data.get().json()
     };
     timeline.push(save_data);
-
-
+    
+    const byebye = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: `
+      <p>Many thanks for your participation ! </p>
+      `,
+      post_trial_gap: 2000,
+      trial_duration: 2000,
+      stimulus_duration: 2000,
+    }; 
+    timeline.push(byebye);
+    
     jsPsych.run(timeline);
 
     </script>
