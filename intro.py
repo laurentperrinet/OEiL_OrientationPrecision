@@ -15,8 +15,8 @@ class Intro(Scene):
         title = Title(f"Orientation discrimination experiment")
         text1 = Tex('Welcome to this psychophysics experiment !').shift(2*UP)
         text2 = Tex('It studies the perception of the orientation of contours').shift(UP)
-        text3 = Tex('in images with different levels of difficulty.') 
-        text4 = Tex('Your input to understand percption is important,').shift(DOWN)
+        text3 = Tex('in images with different levels of variability in orientation.') 
+        text4 = Tex('Your contribution to understand perception is important,').shift(DOWN)
         text5 = Tex('many thanks for participating !').shift(2*DOWN)
 
         self.add(title)
