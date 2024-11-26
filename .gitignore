@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 /osfstorage-archive
 .osfcli.config
+/media
