@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    
+    <title>Orientation discrimination experiment</title>
     <script src="https://unpkg.com/jspsych@7.3.4"></script>
     <script src="https://unpkg.com/@jspsych-contrib/plugin-image-swipe-response@1.0.0"></script>
     <!-- https://www.jspsych.org/v7/plugins/html-button-response/ -->
@@ -18,7 +18,8 @@
     </style>
   </head>
   <body></body>
-  <script>
+
+  <script type="text/javascript">
     var timeline = [];
 
     var preload = {
@@ -28,16 +29,13 @@
     timeline.push(preload);
 
     var instructions = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: `
-        <img width="100%" src="experiment.jpg">
-        <p>This experiment will record your key presses or swipes and measure your reaction times. It is anonymized and no other information is recorded. This can be verified by looking at the <a href="https://github.com/laurentperrinet/OEiL_OrientationPrecision">source code(</a> and on the <a href="https://osf.io/3ytnp/">publicly-available recorded data</a>.</p>
-        <p>Press any key to begin.</p>        
-      `,
-      post_trial_gap: 5000,
+      type: jsPsychImageSwipeResponse,
+      stimulus:'experiment.jpg',
+      // stimulus_height: Math.min(window.screen.height, window.screen.width),
+      stimulus_width: Math.min(window.screen.height, window.screen.width),
+      maintain_aspect_ratio: true,
     }; 
     timeline.push(instructions);
-
 
     // https://github.com/jspsych/jspsych-contrib/tree/main/packages/plugin-image-swipe-response
     var trials = {
