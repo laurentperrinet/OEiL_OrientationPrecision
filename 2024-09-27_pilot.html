@@ -20,6 +20,17 @@
   <body></body>
 
   <script type="text/javascript">
+
+
+    var jsPsych = initJsPsych({
+          show_progress_bar: true,
+          auto_update_progress_bar: false,
+          default_iti: 200,
+          on_finish: function(){
+            window.location = "https://laurentperrinet.github.io/OEiL_OrientationPrecision/"
+          }
+        });    
+
     var timeline = [];
 
     var preload = {
@@ -266,15 +277,6 @@
         ],
     }
     timeline.push(trials);
-
-    var jsPsych = initJsPsych({
-      show_progress_bar: true,
-      auto_update_progress_bar: false,
-      default_iti: 200,
-      on_finish: function(){
-        window.location = "https://laurentperrinet.github.io/OEiL_OrientationPrecision/"
-      }
-    });    
 
     const filename = `pilot-${jsPsych.randomization.randomID(10)}-data.json`
     const save_data = {
