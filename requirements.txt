@@ -5,3 +5,7 @@ pip
 manim
 matplotlib
 scipy
+ipykernel
+jupyter
+notebook
+torch
