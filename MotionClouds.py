@@ -846,7 +846,7 @@ def in_show_video(name, vext='.mp4', ext='.png', loop=True, autoplay=True, contr
             video_encoded = b64encode(video).decode("utf-8")
             s = """
             <center><table border=none width=100% height=100%>
-            <tr> <td width=100%><center><video {0} src="data:video/{1};base64,{2}" width=100%\>
+            <tr> <td width=100%><center><video {0} src="data:video/{1};base64,{2}" width=100% \>
             </td></tr></table></center>""".format(opts, vext[1:], video_encoded)
             # display(HTML(s))
     else:
