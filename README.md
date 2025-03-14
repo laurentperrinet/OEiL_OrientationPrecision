@@ -18,14 +18,11 @@ It should take no more than 5 minutes (216 images). It would be great if you cou
 
 https://laurentperrinet.github.io/OEiL_OrientationPrecision/2024-09-27_pilot.html
 
-(warning : this pilot is plain - no instructions and such)
-
 many thanks
 Laurent
 ```
 
 * https://laurentperrinet.github.io/OEiL_OrientationPrecision/2024-09-27_pilot.html
- 
 * https://pipe.jspsych.org/admin/lXM18cF9QE3z
 * https://osf.io/3ytnp/
 
