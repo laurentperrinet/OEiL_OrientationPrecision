@@ -3,7 +3,8 @@
 # `pip install -U -r requirements.txt`
 watermark
 pandas
-numpy<2
+numpy
+nbformat
 pip
 manim
 matplotlib
